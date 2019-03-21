@@ -10,13 +10,19 @@ def performMath():
     global run #makes the run variable global
     global previous
 
-    equation = input('enter equation:')
+    if previous == 0:
+        equation = input('enter equation:')
+
+    else:
+        equation = input(str(previous))
     if equation == 'quit':
         run = False
     else:
         equation = re.sub('[a-zA-Z,.:()" "]', '', equation)
-        previous = eval(equation)
-        print('You typed', previous)
+        if previous == 0:
+            previous = eval(equation)
+        else:
+            previous == eval(str(previous) + equation)
 
 while run:
     performMath()
